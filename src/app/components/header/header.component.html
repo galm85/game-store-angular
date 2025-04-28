@@ -1,1 +1,12 @@
-<p>header works!</p>
+<header class="header layout-padding-inline">
+
+  <a class="header__logo" routerLink="/">
+    <img src="assets/logo.png" alt="game store logo">
+  </a>
+
+  <nav class="header__navigation">
+    @for (nav of navLinks; track $index) {
+      <a class="navigation-link" [routerLink]="nav.link" routerLinkActive="selected-link">{{nav.label}}</a>
+    }
+  </nav>
+</header>

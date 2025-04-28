@@ -1,6 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'variables' as v;
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+body{
+  font-family: v.$main_font;
+}
+
+
+// layout /////
+.layout-padding-inline{
+  padding-inline: 120px;
+}
+
+

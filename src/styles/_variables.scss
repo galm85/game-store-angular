@@ -8,3 +8,28 @@ $white:#e0e1dd;
 $dark:#0d1b2a;
 $light:#778da9;
 
+
+
+// fonts
+@font-face {
+  font-family: 'inter';
+  src: url('/assets/fonts/inter/Inter_18pt-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'inter';
+  src: url('/assets/fonts/inter/Inter_18pt-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'inter';
+  src: url('/assets/fonts/inter/Inter_18pt-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+$main_font:'inter';
