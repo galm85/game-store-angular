@@ -1,0 +1,29 @@
+@use 'variables' as v;
+
+.game-store-footer{
+  background-color: v.$dark;
+
+  .footer-info{
+    img{
+      width: 150px;
+      height: 150px;
+    }
+    .store-information{
+      color: v.$white;
+    }
+  }
+
+
+  .footer-copyright{
+    text-align: center;
+    color: v.$white;
+    border-top: 1px solid v.$light;
+    padding-block: 20px;
+    margin-top: 40px;
+    font-weight: 300;
+    a{
+      color: v.$text_light;
+    }
+  }
+
+}
