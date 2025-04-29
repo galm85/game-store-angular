@@ -5,10 +5,19 @@
           <img class="data-image" [src]="game()?.background_image" [alt]="game()?.name">
           <div class="data-content">
               <h1>{{game()?.name}}</h1>
-
               <app-rating [rate]="game()?.rating"/>
+              <app-platforms [platforms]="game()?.platforms"/>
+              <p>Released: {{game()?.released | date}}</p>
           </div>
       </div>
+
+      <div class="game-content">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dolore voluptates mollitia, dolorum magnam numquam velit aliquid commodi ut reiciendis rem obcaecati deleniti, impedit ducimus quis est totam voluptatibus beatae id dolorem, itaque laboriosam praesentium! Cumque omnis quaerat accusamus, debitis quidem, laborum a explicabo perferendis repellat dolorum tenetur reiciendis, vel dicta. Accusamus itaque alias quae quia est totam sunt magnam sit laudantium exercitationem iure consequatur ut, quos corporis accusantium beatae quo suscipit assumenda recusandae sed ducimus nam? Rem quia minima ipsum. Error dolorum alias commodi, aliquam recusandae modi quos dolor dignissimos repellendus suscipit temporibus animi corporis voluptatem provident beatae repudiandae porro tenetur officiis! At tempore distinctio impedit debitis a vitae suscipit aliquid eum. Aliquam, deserunt tempora error quasi sequi cupiditate facilis eum, omnis, nihil itaque quam asperiores. Quibusdam ut aut ipsa non obcaecati libero optio dolore deleniti, quas quidem adipisci reprehenderit ad earum necessitatibus veritatis amet dolorum officia labore rem!
+        </p>
+
+      </div>
+
 
       <div class="single-game__screenshots">
         @for (sc of game()?.short_screenshots; track sc.id) {

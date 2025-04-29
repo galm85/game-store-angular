@@ -1,0 +1,12 @@
+.platforms{
+  margin-block: 10px;
+  span{
+    font-size: 14px;
+    text-transform: uppercase;
+    &:not(:first-child){
+      border-left: 1px solid blue;
+      margin-inline-start:10px ;
+      padding-inline-start: 10px;
+    }
+  }
+}

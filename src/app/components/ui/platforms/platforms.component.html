@@ -1,0 +1,7 @@
+@if(platforms){
+  <div class="platforms">
+    @for (platform of platforms; track $index) {
+      <span class="platform">{{platform.platform.name}}</span>
+    }
+  </div>
+}
