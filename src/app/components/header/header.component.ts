@@ -13,6 +13,7 @@ export class HeaderComponent {
   navLinks:navigationLink[] = [
     {label:'About',link:'about'},
     {label:'Games',link:'games'},
+    {label:'consoles',link:'consoles'},
     {label:'Accessories',link:'accessories'},
     {label:'Contact Us',link:'contact-us'},
   ]
