@@ -1,0 +1,21 @@
+<div class="layout-padding-inline single-game">
+
+    @if (game()) {
+      <div class="single-game__data">
+          <img class="data-image" [src]="game()?.background_image" [alt]="game()?.name">
+          <div class="data-content">
+              <h1>{{game()?.name}}</h1>
+
+              <app-rating [rate]="game()?.rating"/>
+          </div>
+      </div>
+
+      <div class="single-game__screenshots">
+        @for (sc of game()?.short_screenshots; track sc.id) {
+          <img [src]="sc.image" [alt]="sc.id">
+        }
+      </div>
+
+    }
+
+</div>

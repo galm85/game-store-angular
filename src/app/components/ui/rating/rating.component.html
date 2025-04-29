@@ -1,0 +1,8 @@
+<div class="rating">
+  @for (start of rateArray; track $index) {
+    <mat-icon class="star" aria-hidden="false"  fontIcon="star_rate"></mat-icon>
+  }
+  @if(isHalf){
+    <mat-icon class="star" aria-hidden="false"  fontIcon="star_half"></mat-icon>
+  }
+</div>
