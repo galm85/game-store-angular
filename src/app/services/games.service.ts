@@ -1,7 +1,10 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 
-import type { RawgGame } from '../interfaces/rawg.interface';
+import type { Game, GamesListRequest } from '../interfaces/game.interface';
 import { HttpClient } from '@angular/common/http';
+import { catchError, map, throwError } from 'rxjs';
+import { ScreenShotRequest } from '../interfaces/screenShot.interface';
+import { GenreRequest } from '../interfaces/genre.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +15,7 @@ export class GamesService {
   private baseUrl = 'https://api.rawg.io/api';
   private gamesURL = 'assets/server/rawgGames.json';
   private httpClient = inject(HttpClient);
-  private games = signal<RawgGame[]>([]);
+  private games = signal<Game[]>([]);
 
   allGames = this.games.asReadonly();
 
@@ -28,22 +31,47 @@ export class GamesService {
     return computed(()=>this.games().filter(g => g.rating > 4.45))
   }
 
-  getGameDetails(gameId:string){
-    return computed(()=>this.games().find(g=>g.id == +gameId))
-  }
-
-  getSinglegame(gameId:string){
+  getSingleGame(gameId:string){
     return this.httpClient.get(`${this.baseUrl}/games/${gameId}?key=${this.APIKEY}`)
   }
 
   getSingleGameScreenShots(gameId:string){
-    return this.httpClient.get(`${this.baseUrl}/games/${gameId}/screenshots?key=${this.APIKEY}`)
+    return this.httpClient.get<ScreenShotRequest>(`${this.baseUrl}/games/${gameId}/screenshots?key=${this.APIKEY}`)
+      .pipe(
+        map(data=> data.results),
+        catchError((error)=>{
+          console.log(error);
+          return throwError(()=>new Error('No Fetch screen shots'));
+        })
+      )
+  }
+
+  getGamesList(idenifier:string,value:string){
+    return this.httpClient.get<GamesListRequest>(`${this.baseUrl}/games?key=${this.APIKEY}&${idenifier}=${value}`)
+      .pipe(
+        map(data => data.results),
+        catchError((error)=>{
+          console.log(error);
+          return throwError(()=>new Error('No Fetch Games'));
+        })
+      )
+  }
+
+  getGenres(){
+    return this.httpClient.get<GenreRequest>(`${this.baseUrl}/genres?key=${this.APIKEY}`)
+      .pipe(
+        map(data=> data.results),
+        catchError((error)=>{
+          console.log(error);
+          return throwError(()=>new Error('No Fetch Genres'));
+        })
+      )
   }
 
 
 
   private fetchGames(){
-   return this.httpClient.get<RawgGame[]>(this.gamesURL).subscribe(response => {
+   return this.httpClient.get<Game[]>(this.gamesURL).subscribe(response => {
       this.games.set(response);
       })
     }

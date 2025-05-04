@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Platform, Platform2 } from '../../../interfaces/rawg.interface';
+import { Platform, Platform2 } from '../../../interfaces/game.interface';
 
 @Component({
   selector: 'app-platforms',

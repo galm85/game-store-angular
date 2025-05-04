@@ -1,6 +1,6 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { GamesService } from '../../../services/games.service';
-import { Genre } from '../../../interfaces/rawg.interface';
+import { Genre } from '../../../interfaces/game.interface';
 import { RouterLink } from '@angular/router';
 
 
@@ -872,13 +872,18 @@ const testGenre : any[] = [
 export class CategoriesComponent implements OnInit {
 
   private gamesService = inject(GamesService);
+  private destroyRef = inject(DestroyRef);
 
-  categories = signal<any[]| undefined >( testGenre);
+  categories = signal<Genre[]>([]);
 
 
 
   ngOnInit(): void {
+    const subscription = this.gamesService.getGenres().subscribe({
+      next:(data => this.categories.set(data))
+    })
 
+    this.destroyRef.onDestroy(()=>subscription.unsubscribe());
   }
 
 }
