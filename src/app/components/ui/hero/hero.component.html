@@ -1,0 +1,11 @@
+
+  <section class="hero">
+
+    <img [src]="hero.imageUrl" [alt]="hero.title" class="hero__image">
+    <div class="layout-padding-inline hero__content">
+      <h2 class="hero__title">{{hero.text}}</h2>
+      <a [href]="hero.url" [target]="hero.newWindow ? '_blank' : ''" class="hero__btn">{{hero.buttonLabel}}</a>
+    </div>
+
+
+</section>

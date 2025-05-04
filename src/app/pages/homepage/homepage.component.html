@@ -1,12 +1,7 @@
-<section class="hero">
-    <img [src]="banner.imageUrl" [alt]="banner.title" class="hero__image">
-    <div class="layout-padding-inline hero__content">
-      <h2 class="hero__title">{{banner.text}}</h2>
-      <a class="hero__btn">{{banner.button}}</a>
-    </div>
-</section>
 
-
+@if (banner) {
+  <app-hero [heroData]="banner"/>
+}
 
 @if (gamesCarusel()) {
   <app-games-carusel [games]="gamesCarusel()"/>

@@ -1,19 +1,14 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { GamesService } from '../../services/games.service';
 import { RouterLink } from '@angular/router';
-import { GamesCaruselComponent } from "../../components/games-carusel/games-carusel.component";
+import { HeroComponent } from "../../components/ui/hero/hero.component";
+import { GamesCaruselComponent } from '../../components/ui/games-carusel/games-carusel.component';
 
 
-interface Banner{
-  imageUrl:string;
-  button:string;
-  text:string;
-  title:string;
-}
 
 @Component({
   selector: 'app-homepage',
-  imports: [RouterLink, GamesCaruselComponent],
+  imports: [RouterLink, GamesCaruselComponent, HeroComponent],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss'
 })
@@ -21,11 +16,13 @@ export class HomepageComponent implements OnInit{
 
     private gamesService = inject(GamesService);
 
-    banner:Banner = {
+    banner = {
       imageUrl:'assets/images/homepagebanner.png',
-      button:'see more',
+      buttonLabel:'see more',
       text:'Assassin\'s Creed Shadows: check the reactions from the press',
-      title:'assassins creed'
+      title:'assassins creed',
+      url:'https://store.steampowered.com/app/3159330/Assassins_Creed_Shadows/',
+      newWindow:true
     }
 
     allGames = this.gamesService.allGames

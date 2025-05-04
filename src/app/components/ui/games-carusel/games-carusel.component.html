@@ -1,7 +1,7 @@
 <section class="games-carusel">
 
 
-  <c-carousel [animate]="true" [interval]="5000">
+  <c-carousel [animate]="false" [interval]="5000" [activeIndex]="0">
     <c-carousel-indicators />
     <c-carousel-inner>
       @for (slide of games(); track slide.id) {
