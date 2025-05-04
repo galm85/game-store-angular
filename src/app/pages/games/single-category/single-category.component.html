@@ -1,17 +1,4 @@
 <div class="layout-padding-inline category-page">
-
   <h1 class="page-title">{{categorySlug()}} Games</h1>
-
-
-  @if (games()) {
-    <div class="games-wrapper">
-      @for (game of games(); track game.id) {
-        <a class="game-card" [routerLink]="['/games', game.id]">
-            <img [src]="game.background_image" [alt]="game.name">
-            <h6>{{game.name}}</h6>
-        </a>
-      }
-    </div>
-  }
-
+  <app-page-grid [items]="games()"/>
 </div>
