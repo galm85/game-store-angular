@@ -4,26 +4,57 @@
       <div class="single-game__data">
           <img class="data-image" [src]="game()?.background_image" [alt]="game()?.name">
           <div class="data-content">
-              <h1>{{game()?.name}}</h1>
+              <h1 class="title">{{game()?.name}}</h1>
               <app-rating [rate]="game()?.rating"/>
               <app-platforms [platforms]="game()?.platforms"/>
-              <p>Released: {{game()?.released | date}}</p>
+              <p class="date">
+                  <mat-icon class="date-icon" aria-hidden="false"  fontIcon="calendar_month"></mat-icon>
+                  <span>{{game()?.released | date}}</span>
           </div>
       </div>
 
-      <div class="game-content">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dolore voluptates mollitia, dolorum magnam numquam velit aliquid commodi ut reiciendis rem obcaecati deleniti, impedit ducimus quis est totam voluptatibus beatae id dolorem, itaque laboriosam praesentium! Cumque omnis quaerat accusamus, debitis quidem, laborum a explicabo perferendis repellat dolorum tenetur reiciendis, vel dicta. Accusamus itaque alias quae quia est totam sunt magnam sit laudantium exercitationem iure consequatur ut, quos corporis accusantium beatae quo suscipit assumenda recusandae sed ducimus nam? Rem quia minima ipsum. Error dolorum alias commodi, aliquam recusandae modi quos dolor dignissimos repellendus suscipit temporibus animi corporis voluptatem provident beatae repudiandae porro tenetur officiis! At tempore distinctio impedit debitis a vitae suscipit aliquid eum. Aliquam, deserunt tempora error quasi sequi cupiditate facilis eum, omnis, nihil itaque quam asperiores. Quibusdam ut aut ipsa non obcaecati libero optio dolore deleniti, quas quidem adipisci reprehenderit ad earum necessitatibus veritatis amet dolorum officia labore rem!
-        </p>
+      <div class="single-game__description" [innerHTML]="game().description"></div>
 
+      <div class="single-game__more-data">
+
+        <div class="data">
+            <p class="data-title">
+              <mat-icon class="genre-icon" aria-hidden="false"  fontIcon="category"></mat-icon>
+            </p>
+            <div class="data-values">
+              @for (genre of game()?.genres; track genre.id) {
+                <span>{{genre.name}}</span>
+              }
+            </div>
+        </div>
+
+        <div class="data">
+          <p class="data-title">
+            <mat-icon class="store-icon" aria-hidden="false"  fontIcon="storefront"></mat-icon>
+          </p>
+          <div class="data-values">
+            @for (store of game()?.stores; track store.id) {
+              <a [href]="'https://'+store.store.domain" target="_blank">{{store.store.name}}</a>
+            }
+          </div>
+        </div>
+
+        <div class="tags">
+            @for (tag of game()?.tags; track tag.id) {
+              <span class="tag">{{tag.name}}</span>
+            }
+        </div>
       </div>
 
 
-      <div class="single-game__screenshots">
-        @for (sc of game()?.short_screenshots; track sc.id) {
-          <img [src]="sc.image" [alt]="sc.id">
-        }
-      </div>
+      @if (screenShots()) {
+        <div class="single-game__screenshots">
+          @for (sc of screenShots().results; track sc.id) {
+            <img [src]="sc.image" [alt]="sc.id">
+          }
+        </div>
+      }
+
 
     }
 

@@ -17,7 +17,6 @@ export class RatingComponent implements OnInit{
     if(this.rate){
       const arr = Array.from({length:this.rate},(_,i)=>i);
       this.rateArray = [...arr];
-      console.log(arr);
       if(this.rate > arr.length){
         this.isHalf = true;
       }

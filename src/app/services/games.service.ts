@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GamesService {
 
+  private APIKEY = '882969a6f0c44046babae5bc1035b366';
+  private baseUrl = 'https://api.rawg.io/api';
   private gamesURL = 'assets/server/rawgGames.json';
   private httpClient = inject(HttpClient);
   private games = signal<RawgGame[]>([]);
@@ -29,6 +31,16 @@ export class GamesService {
   getGameDetails(gameId:string){
     return computed(()=>this.games().find(g=>g.id == +gameId))
   }
+
+  getSinglegame(gameId:string){
+    return this.httpClient.get(`${this.baseUrl}/games/${gameId}?key=${this.APIKEY}`)
+  }
+
+  getSingleGameScreenShots(gameId:string){
+    return this.httpClient.get(`${this.baseUrl}/games/${gameId}/screenshots?key=${this.APIKEY}`)
+  }
+
+
 
   private fetchGames(){
    return this.httpClient.get<RawgGame[]>(this.gamesURL).subscribe(response => {
