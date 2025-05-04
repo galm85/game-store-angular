@@ -5,21 +5,20 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, throwError } from 'rxjs';
 import { ScreenShotRequest } from '../interfaces/screenShot.interface';
 import { GenreRequest } from '../interfaces/genre.interface';
+import { RawgService } from './rawg.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GamesService {
+export class GamesService extends RawgService {
 
-  private APIKEY = '882969a6f0c44046babae5bc1035b366';
-  private baseUrl = 'https://api.rawg.io/api';
   private gamesURL = 'assets/server/rawgGames.json';
-  private httpClient = inject(HttpClient);
   private games = signal<Game[]>([]);
 
   allGames = this.games.asReadonly();
 
   constructor(){
+    super();
     this.fetchGames();
   }
 
@@ -32,11 +31,11 @@ export class GamesService {
   }
 
   getSingleGame(gameId:string){
-    return this.httpClient.get(`${this.baseUrl}/games/${gameId}?key=${this.APIKEY}`)
+    return this.httpClient.get(`${this.BASE_URL}/games/${gameId}?key=${this.APIKEY}`)
   }
 
   getSingleGameScreenShots(gameId:string){
-    return this.httpClient.get<ScreenShotRequest>(`${this.baseUrl}/games/${gameId}/screenshots?key=${this.APIKEY}`)
+    return this.httpClient.get<ScreenShotRequest>(`${this.BASE_URL}/games/${gameId}/screenshots?key=${this.APIKEY}`)
       .pipe(
         map(data=> data.results),
         catchError((error)=>{
@@ -47,7 +46,7 @@ export class GamesService {
   }
 
   getGamesList(idenifier:string,value:string){
-    return this.httpClient.get<GamesListRequest>(`${this.baseUrl}/games?key=${this.APIKEY}&${idenifier}=${value}`)
+    return this.httpClient.get<GamesListRequest>(`${this.BASE_URL}/games?key=${this.APIKEY}&${idenifier}=${value}`)
       .pipe(
         map(data => data.results),
         catchError((error)=>{
@@ -58,7 +57,7 @@ export class GamesService {
   }
 
   getGenres(){
-    return this.httpClient.get<GenreRequest>(`${this.baseUrl}/genres?key=${this.APIKEY}`)
+    return this.httpClient.get<GenreRequest>(`${this.BASE_URL}/genres?key=${this.APIKEY}`)
       .pipe(
         map(data=> data.results),
         catchError((error)=>{

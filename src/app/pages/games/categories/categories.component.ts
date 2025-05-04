@@ -21,7 +21,6 @@ export class CategoriesComponent implements OnInit {
     const subscription = this.gamesService.getGenres().subscribe({
       next:(data =>{
         const categoriesGrid = data.map(item => ({text:item.name,url:'/games/genre/'+item.slug,image:item.image_background}));
-        console.log(categoriesGrid);
         this.categories.set(categoriesGrid)
       })
     })

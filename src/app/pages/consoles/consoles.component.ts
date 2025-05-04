@@ -1,8 +1,9 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Console } from '../../interfaces/console.interface';
 import { GridItem } from '../../interfaces/ui.interface';
 import { PageGridComponent } from "../../components/ui/page-grid/page-grid.component";
+import { ConsolesService } from '../../services/consoles.service';
 
 
 const dummyConsoles:any[] =  [
@@ -160,21 +161,23 @@ const dummyConsoles:any[] =  [
 })
 export class ConsolesComponent implements OnInit{
 
-
+  private consolesService = inject(ConsolesService);
   consoles = signal<GridItem[]>([]);
 
   ngOnInit(): void {
-      const consoles:GridItem[] = dummyConsoles.map(console =>
-        {
-          return {
-            text:console.name,
-            image:console.image_background,
-            url:'/consoles/' + console.slug
-          }
-        }
-      );
 
-      this.consoles.set(consoles)
+    const subscription = this.consolesService.getConsolesList().subscribe({
+      next:((data:Console[]) => {
+        const consolesGrid = data.map(item => (
+          {
+            text:item.name,
+            image:item.image_background,
+            url:'/consoles/' + item.slug
+          }
+        ))
+        this.consoles.set(consolesGrid);
+      })
+    })
   }
 
 }
