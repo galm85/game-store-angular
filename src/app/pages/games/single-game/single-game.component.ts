@@ -631,7 +631,6 @@ export class SingleGameComponent implements OnInit {
 
     const subscription = this.gamesService.getSinglegame(this.gameId()).subscribe({
       next:(data:any)=>{
-        console.log(data)
         this.game.set(data);
       }
     })
