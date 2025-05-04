@@ -1,0 +1,25 @@
+<section class="games-carusel">
+
+
+  <c-carousel [animate]="true" [interval]="5000">
+    <c-carousel-indicators />
+    <c-carousel-inner>
+      @for (slide of games(); track slide.id) {
+        <c-carousel-item>
+          <img
+            alt="{{slide.name}}"
+            class="d-block w-100"
+            loading="lazy"
+            src="{{slide.background_image}}"
+          />
+          <c-carousel-caption class="d-none d-md-block">
+            <h3>{{ slide.name }}</h3>
+          </c-carousel-caption>
+        </c-carousel-item>
+      }
+    </c-carousel-inner>
+    <c-carousel-control [routerLink] caption="Previous" direction="prev" />
+    <c-carousel-control [routerLink] caption="Next" direction="next" />
+  </c-carousel>
+
+</section>

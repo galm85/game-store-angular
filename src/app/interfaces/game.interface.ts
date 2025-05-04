@@ -91,6 +91,7 @@ export interface Genre {
 export interface Store {
   id: number
   store: Store2
+  url?:string;
 }
 
 export interface Store2 {

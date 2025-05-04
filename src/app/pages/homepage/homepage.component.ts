@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { GamesService } from '../../services/games.service';
 import { RouterLink } from '@angular/router';
+import { GamesCaruselComponent } from "../../components/games-carusel/games-carusel.component";
 
 
 interface Banner{
@@ -12,7 +13,7 @@ interface Banner{
 
 @Component({
   selector: 'app-homepage',
-  imports: [RouterLink],
+  imports: [RouterLink, GamesCaruselComponent],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss'
 })
