@@ -1,0 +1,51 @@
+@use 'variables' as v;
+
+.categories-page{
+
+  color: v.$text;
+
+  .categories-wrapper{
+    padding-block: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    row-gap: 50px;
+
+    a.category-card{
+      display: block;
+      width: 250px;
+      height: 150px;
+      text-decoration: none;
+      color: v.$text;
+      .categorie-card-image{
+        width: 100%;
+        height: 90%;
+        object-fit: cover;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+      }
+
+      .categorie-card-title{
+        text-align: center;
+        text-transform: uppercase;
+        color: v.$text;
+        font-size: 14px;
+        font-weight: 300;
+        transition: all 0.2s ease;
+
+      }
+
+      &:hover{
+        text-decoration: underline;
+        .categorie-card-image{
+          border: 1px solid v.$light;
+        }
+        .categorie-card-title{
+          font-size: 16px;
+        }
+      }
+
+    }
+  }
+}
