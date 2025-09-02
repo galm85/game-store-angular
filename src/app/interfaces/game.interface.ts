@@ -29,6 +29,16 @@ export interface Game {
   esrb_rating: EsrbRating
   short_screenshots: ShortScreenshot[],
   description?:string;
+  developers?:GameDeveloper[];
+}
+
+
+export interface GameDeveloper {
+  games_count:number;
+  id:number;
+  image_background:string;
+  name:string;
+  slug:string;
 }
 
 export interface Rating {

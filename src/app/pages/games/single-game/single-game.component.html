@@ -5,11 +5,27 @@
           <img class="data-image" [src]="game()?.background_image" [alt]="game()?.name">
           <div class="data-content">
               <h1 class="title">{{game()?.name}}</h1>
+
               <app-rating [rate]="game()?.rating"/>
               <app-platforms [platforms]="game()?.platforms"/>
+              <div class="game-developers">
+                @if(game().developers){
+                  @for (developer of game().developers; track developer.id){
+                    <a class="developers-tag" [routerLink]="'/developers/' + developer.slug" [state]="{id:developer.id}">
+                        @if(developer.image_background){
+                          <img class="developer-logo" [src]="developer.image_background" [alt]="developer.name + ' logo'">
+                        }
+                        <span class="developer-name">
+                          {{developer.name}}
+                        </span>
+                    </a>
+                  }
+                }
+              </div>
               <p class="date">
                   <mat-icon class="date-icon" aria-hidden="false"  fontIcon="calendar_month"></mat-icon>
                   <span>{{game()?.released | date}}</span>
+              </p>
           </div>
       </div>
 

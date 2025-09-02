@@ -6,12 +6,13 @@ import { PlatformsComponent } from "../../../components/ui/platforms/platforms.c
 import { DatePipe } from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 import { ScreenShot } from '../../../interfaces/screenShot.interface';
+import { RouterLink } from '@angular/router';
 
 
 
 @Component({
   selector: 'app-single-game',
-  imports: [RatingComponent, PlatformsComponent,DatePipe,MatIconModule],
+  imports: [RouterLink,RatingComponent, PlatformsComponent,DatePipe,MatIconModule],
   templateUrl: './single-game.component.html',
   styleUrl: './single-game.component.scss'
 })
@@ -21,7 +22,7 @@ export class SingleGameComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
 
   gameId = input.required<string>();
-  game = signal<Game | undefined>(undefined)
+  game = signal<Game>({} as Game)
   screenShots = signal<ScreenShot[]>([])
 
 

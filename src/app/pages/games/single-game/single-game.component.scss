@@ -27,6 +27,31 @@
         font-size: 14px;
       }
     }
+
+    .game-developers{
+      margin-block: 20px;
+      .developers-tag{
+        display: inline-block;
+        margin-inline-end: 20px;
+        background-color: v.$white;
+        padding: 3px 8px;
+        border-radius: 8px;
+        text-decoration: none;
+
+
+        img.developer-logo{
+          width: 20px;
+          height: 20px;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+        .developer-name{
+         color: v.$text;
+         font-size: 14px;
+         font-weight: 300;
+        }
+      }
+    }
   }
 
 
