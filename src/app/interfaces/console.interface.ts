@@ -15,6 +15,7 @@ export interface Console {
   image: null | string;
   year_start: null | string | number;
   year_end: null | string | number;
+  description:null | string;
   games:[{
     id:number;
     slug:string;

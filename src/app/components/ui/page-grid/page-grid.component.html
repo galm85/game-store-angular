@@ -3,7 +3,7 @@
   <section class="grid-items">
 
     @for (item of items; track item.text) {
-      <a [routerLink]="item.url" class="grid-item-card">
+      <a [routerLink]="item.url" [state]="{id:item.id}" class="grid-item-card">
         <img [src]="item.image" [alt]="item.text">
         <h6>{{item.text}}</h6>
       </a>

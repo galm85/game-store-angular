@@ -21,7 +21,11 @@ export class SingleCategoryComponent implements OnInit {
   ngOnInit(): void {
     const subscribe = this.gamesService.getGamesList('genres',this.categorySlug()).subscribe({
         next:(data:Game[])=>{
-          const gamesGrid = data.map(item=>({text:item.name,url:'/games/'+item.id,image:item.background_image}));
+          const gamesGrid = data.map(item=>({
+            text:item.name,
+            url:'/games/'+item.id,
+            image:item.background_image
+          }));
             this.games.set(gamesGrid);
         }
     })

@@ -1,5 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { Console } from '../../interfaces/console.interface';
 import { GridItem } from '../../interfaces/ui.interface';
 import { PageGridComponent } from "../../components/ui/page-grid/page-grid.component";
@@ -155,13 +154,14 @@ const dummyConsoles:any[] =  [
 
 @Component({
   selector: 'app-consoles',
-  imports: [RouterLink, PageGridComponent],
+  imports: [PageGridComponent],
   templateUrl: './consoles.component.html',
   styleUrl: './consoles.component.scss'
 })
 export class ConsolesComponent implements OnInit{
 
   private consolesService = inject(ConsolesService);
+  private destroyRef = inject(DestroyRef);
   consoles = signal<GridItem[]>([]);
 
   ngOnInit(): void {
@@ -172,12 +172,15 @@ export class ConsolesComponent implements OnInit{
           {
             text:item.name,
             image:item.image_background,
-            url:'/consoles/' + item.slug
+            url:'/consoles/' + item.slug,
+            id:item.id
           }
         ))
         this.consoles.set(consolesGrid);
       })
     })
+
+    this.destroyRef.onDestroy(()=>subscription.unsubscribe());
   }
 
 }

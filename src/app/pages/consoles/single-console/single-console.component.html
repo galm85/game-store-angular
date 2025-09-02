@@ -1,0 +1,16 @@
+<div class="layout-padding-inline single-console">
+
+  @if (consoleDetails()){
+    <div class="single-console__data">
+      <h1 class="single-console__title">{{consoleDetails()?.name}}</h1>
+      <p class="single-console__years">({{consoleDetails()?.year_start}} - {{consoleDetails()?.year_end ? consoleDetails()?.year_end : '' }})</p>
+      <p class="single-console__description" [innerHTML]="consoleDetails().description"></p>
+    </div>
+    <div class="single-console__image">
+        @if(consoleDetails().image_background){
+          <img [src]="consoleDetails().image_background" [alt]="consoleDetails().name">
+        }
+    </div>
+  }
+
+</div>

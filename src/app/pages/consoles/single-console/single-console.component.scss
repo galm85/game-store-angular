@@ -1,0 +1,21 @@
+@use 'variables' as v;
+
+.single-console{
+  display: flex;
+  gap: 100px;
+  padding-block: 50px;
+
+  &__data{
+    width: 550px;
+  }
+
+  &__image{
+    border-left: 1px solid v.$text;
+    flex:1;
+    padding-inline-start: 20px;
+    img{
+      width: 100%;
+      border-radius: 10px;
+    }
+  }
+}

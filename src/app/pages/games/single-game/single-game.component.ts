@@ -27,6 +27,7 @@ export class SingleGameComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     const subscription = this.gamesService.getSingleGame(this.gameId()).subscribe({
       next:(data:any)=>{
         this.game.set(data);
