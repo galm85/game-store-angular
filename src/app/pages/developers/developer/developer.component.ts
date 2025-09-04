@@ -3,10 +3,11 @@ import { DevelopersService } from '../../../services/developers.service';
 import { Location } from '@angular/common';
 import { Developer } from '../../../interfaces/developer';
 import { CommonModule } from '@angular/common';
+import { ReturnBtnComponent } from "../../../components/ui/return-btn/return-btn.component";
 
 @Component({
   selector: 'app-developer',
-  imports: [CommonModule],
+  imports: [CommonModule, ReturnBtnComponent],
   templateUrl: './developer.component.html',
   styleUrl: './developer.component.scss'
 })

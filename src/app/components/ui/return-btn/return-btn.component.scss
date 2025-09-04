@@ -1,0 +1,22 @@
+@use 'variables' as v;
+
+.return-btn-wrapper{
+  width: 100%;
+  margin-block: 15px;
+  text-align: end;
+}
+.return-btn{
+  border: 1px solid v.$text_light;
+  color: v.$text_light;
+  background: none;
+  padding: 10px 30px;
+  font-weight: 400;
+  border-radius: 10px;
+  text-transform: uppercase;
+  transition: all ease 0.3s;
+
+  &:hover{
+    color: v.$white;
+    background-color: v.$text_light;
+  }
+}
