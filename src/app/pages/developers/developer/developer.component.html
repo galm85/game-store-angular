@@ -1,0 +1,14 @@
+<div class="layout-padding-inline">
+
+  <div *ngIf="developer()" class="single-developer">
+    <div class="single-developer__data">
+      <h1 class="title">{{developer().name}}</h1>
+      <p *ngIf="developer().game_count" class="games-count">{{developer().game_count}} Games</p>
+      <div class="content" [innerHTML]="developer().description"></div>
+    </div>
+
+    <div class="single-developer__image">
+          <img *ngIf="developer().image_background" [src]="developer().image_background" [alt]="developer().name">
+    </div>
+  </div>
+</div>

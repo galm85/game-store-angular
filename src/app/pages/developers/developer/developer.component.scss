@@ -1,0 +1,50 @@
+@use 'variables' as v;
+
+.single-developer{
+  display: flex;
+  justify-content: space-between;
+  max-width: 800px;
+  margin: auto;
+  padding-top: 30px;
+
+  &__data{
+    width: 70%;
+    .title{
+      color: v.$text_light;
+      font-weight: 300;
+      font-size: 42px;
+      text-transform: uppercase;
+    }
+    .games-count{
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .content{
+      width: 100%;
+      padding-inline-end: 20px;
+      h1,h2,h3,h4,h5,h6{
+        font-size: 22px;
+        font-weight: 400;
+        margin-bottom: 10px;
+      }
+      p{
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 30px;
+        text-align: justify;
+      }
+    }
+
+
+  }
+
+  &__image{
+    flex:1;
+    border-left: 1px solid v.$text_light;
+    padding-inline-start: 50px;
+    img{
+      width: 100%;
+    }
+  }
+}

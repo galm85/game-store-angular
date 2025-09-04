@@ -8,6 +8,7 @@ import { SingleCategoryComponent } from './pages/games/single-category/single-ca
 import { PlatformsComponent } from './components/ui/platforms/platforms.component';
 import { ConsolesComponent } from './pages/consoles/consoles.component';
 import { SingleConsoleComponent } from './pages/consoles/single-console/single-console.component';
+import { DeveloperComponent } from './pages/developers/developer/developer.component';
 
 export const routes: Routes = [
   {path:'',component:HomepageComponent},
@@ -18,4 +19,5 @@ export const routes: Routes = [
   {path:'accessories',component:AccessoriesComponent},
   {path:'consoles',component:ConsolesComponent},
   {path:'consoles/:consoleSlug',component:SingleConsoleComponent},
+  {path:'developers/:developerSlug',component:DeveloperComponent},
 ];
