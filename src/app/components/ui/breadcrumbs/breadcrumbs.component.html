@@ -1,0 +1,12 @@
+<nav class="breadcrumbs-nav">
+  <ul *ngIf="breadcrumbs" class="breadcrumbs">
+      <li class="breadcrumb-item">
+        <a  routerLink="/">Home</a>
+      </li>
+      <li  *ngFor="let breadcrumb of breadcrumbs" class="breadcrumb-item">
+        <a [routerLink]="breadcrumb.link">{{breadcrumb.label}}</a>
+      </li>
+      <li *ngIf="currentPage" class="breadcrumb-item current-item">{{currentPage}}</li>
+  </ul>
+
+</nav>

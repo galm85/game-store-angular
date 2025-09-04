@@ -4,3 +4,8 @@ export interface GridItem{
   url:string;
   id?:string | number;
 }
+
+export interface BreadcrumbsItem{
+  label:string,
+  link:string
+}

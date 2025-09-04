@@ -4,10 +4,12 @@ import { Location } from '@angular/common';
 import { Developer } from '../../../interfaces/developer';
 import { CommonModule } from '@angular/common';
 import { ReturnBtnComponent } from "../../../components/ui/return-btn/return-btn.component";
+import { BreadcrumbsComponent } from "../../../components/ui/breadcrumbs/breadcrumbs.component";
+import { BreadcrumbsItem } from '../../../interfaces/ui.interface';
 
 @Component({
   selector: 'app-developer',
-  imports: [CommonModule, ReturnBtnComponent],
+  imports: [CommonModule, ReturnBtnComponent, BreadcrumbsComponent],
   templateUrl: './developer.component.html',
   styleUrl: './developer.component.scss'
 })
@@ -22,15 +24,11 @@ export class DeveloperComponent {
 
   developerId = signal<string>('');
   developer = signal<Developer>({} as Developer);
-  // developer = signal<Developer>({
-  //   id:3524,
-  //   description:"",
-  //   game_count:29,
-  //   image_background:"data:image/png;base64,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",
-  //   name:'rock',
-  //   slug:'rock',
-  // } );
 
+  currentPage = signal<string>('');
+  breadcrumbs:BreadcrumbsItem[] =[
+    {label:'Developers',link:'/developers'},
+  ]
 
   ngOnInit():void{
     const state = this.location.getState() as any;
@@ -38,7 +36,11 @@ export class DeveloperComponent {
     if(state.id){
       this.developerId.set(state.id);
       const subscription = this.developersService.getDeveloperById(this.developerId())
-        .subscribe(res => this.developer.set(res));
+        .subscribe(res => {
+          this.developer.set(res)
+          this.currentPage.set(this.developer().name);
+        }
+        );
 
       this.destroyRef.onDestroy(()=>subscription.unsubscribe());
 

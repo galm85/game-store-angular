@@ -1,4 +1,5 @@
 <div class="layout-padding-inline category-page">
+  <app-breadcrumbs [breadcrumbs]="breadcrumbs" [currentPage]="categorySlug()"></app-breadcrumbs>
   <h1 class="page-title">{{categorySlug()}} Games</h1>
   <app-page-grid [items]="games()"/>
 </div>

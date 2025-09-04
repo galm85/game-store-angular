@@ -1,5 +1,5 @@
 <div class="layout-padding-inline single-game">
-
+  <app-breadcrumbs [currentPage]="game().name" [breadcrumbs]="breadcrumbs"></app-breadcrumbs>
     @if (game()) {
       <div class="single-game__data">
           <img class="data-image" [src]="game()?.background_image" [alt]="game()?.name">

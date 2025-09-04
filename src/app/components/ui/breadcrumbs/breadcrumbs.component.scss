@@ -1,0 +1,34 @@
+@use 'variables' as v;
+
+.breadcrumbs-nav{
+  width: 100%;
+  padding: 20px 0;
+  ul.breadcrumbs{
+    list-style-type: none;
+    display: flex;
+    gap: 7px;
+
+    .breadcrumb-item {
+
+    a{
+      color: v.$light;
+      text-decoration: none;
+      font-weight: 300;
+      text-transform: capitalize;
+    }
+
+     &::before{
+        margin-inline-end: 5px;
+        color: v.$light;
+      }
+
+      &.current-item{
+        color: v.$text_light;
+        font-weight: 400;
+        text-transform: capitalize;
+      }
+
+  }
+
+  }
+}

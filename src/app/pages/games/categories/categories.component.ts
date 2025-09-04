@@ -2,11 +2,12 @@ import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { GamesService } from '../../../services/games.service';
 import { GridItem } from '../../../interfaces/ui.interface';
 import { PageGridComponent } from "../../../components/ui/page-grid/page-grid.component";
+import { BreadcrumbsComponent } from "../../../components/ui/breadcrumbs/breadcrumbs.component";
 
 
 @Component({
   selector: 'app-categories',
-  imports: [PageGridComponent],
+  imports: [PageGridComponent, BreadcrumbsComponent],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'
 })
